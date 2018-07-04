@@ -1,0 +1,83 @@
+FProjectBundle\Entity\But:
+    type: entity
+    table: but
+    repositoryClass: FProjectBundle\Entity\ButRepository
+    indexes:
+        idx_joueur_buteur:
+            columns:
+                - id_joueur
+        idx_club_buteur:
+            columns:
+                - id_club
+        idx_conf_buteur:
+            columns:
+                - id_confrontation
+        idx_assist_but:
+            columns:
+                - id_assist
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        ordre:
+            type: integer
+            nullable: false
+            unsigned: false
+        penalty:
+            type: boolean
+            nullable: false
+        csc:
+            type: boolean
+            nullable: false
+        minute:
+            type: integer
+            nullable: false
+            unsigned: false
+        minuteAdditionnelle:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: minute_additionnelle
+    manyToOne:
+        idJoueur:
+            targetEntity: Joueur
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_joueur:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idClub:
+            targetEntity: Club
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_club:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idConfrontation:
+            targetEntity: Confrontation
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_confrontation:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idAssist:
+            targetEntity: Joueur
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_assist_joueur:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

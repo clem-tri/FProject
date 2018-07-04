@@ -1,0 +1,17 @@
+{% extends "@SonataAdmin/CRUD/base_list.html.twig" %}
+{% block no_result_content %}
+    <div class="info-box">
+        <span class="info-box-icon bg-aqua"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></span>
+        <div class="info-box-content">
+            <span class="info-box-text">Utilisez un filtre pour afficher un classement</span>
+            <div class="progress">
+                <div class="progress-bar" style="width: 0%"></div>
+            </div>
+            <span class="progress-description">
+                                    {% if not app.request.xmlHttpRequest %}
+                                        {% include 'SonataAdminBundle:Button:create_button.html.twig' %}
+                                    {% endif %}
+                                </span>
+        </div><!-- /.info-box-content -->
+    </div>
+{% endblock %}

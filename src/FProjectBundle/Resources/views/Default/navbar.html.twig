@@ -1,0 +1,123 @@
+{% extends "::base.html.twig" %}
+{% block stylesheets %}
+   {{ parent() }}
+<style>
+    body {
+        padding-top: 65px;
+    }
+</style>
+{% endblock %}
+{% block body %}
+    {% block menu %}
+    {% endblock %}
+        {% block header %}
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('f_project_homepage') }}">F-Project</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <!-- 1 -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Matchs
+                            <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ path('fproject_confrontation_nextgames') }}">Matchs à venir</a>
+                            </li>
+
+
+
+                            <li>
+                                <a href="{{ path('fproject_confrontation_thisweekgames') }}">Matchs de la semaine</a>
+                            </li>
+
+
+                            <li>
+                                <a href="{{ path('fproject_confrontation_thismonthgames') }}">Matchs ce mois-ci</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- 2 -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Top Buteurs
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ path('fproject_but_allbuteurs',{ 'saison': "2016-2017"}) }}">
+                                    <span class="glyphicon glyphicon-star"></span> Top Buteurs Europe
+                                </a>
+                            </li>
+                            {% for ligue in ligues %}
+                                <li>
+                                    <a href="{{  path('fproject_but_buteursbyligue',{'ligue': ligue.nom, 'saison': "2016-2017"}) }}">
+                                        <img src="{{ ligue.logo|imagine_filter('navbar_dropdown') }}"> Top Buteurs {{ligue.nom}} 2016-2017
+                                    </a>
+                                </li>
+                                {% endfor %}
+
+                        </ul>
+                    </li>
+                    <!-- 3 -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Classement
+                        <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% for ligue in ligues %}
+                                <li>
+                                    <a href="{{  path('fproject_classement_classement',{'idLigue': ligue.nom, 'saison': "2016-2017"}) }}">
+                                        <img src="{{ ligue.logo|imagine_filter('navbar_dropdown') }}"> {{ligue.nom}} 2016-2017
+                                    </a>
+                                </li>
+                            {% endfor %}
+
+                        </ul>
+
+
+                    </li>
+
+                    <!-- 4 -->
+                    <li>
+                        <a href="{{ path('sonata_admin_dashboard') }}">Administration</a>
+                    </li>
+                </ul>
+                {% if app.user %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" id="usr_name"><span class="fa fa-user-circle"></span> {{ app.user.username }} </a></li>
+                    <li><a href="{{ path("fos_user_security_logout") }}"> <span class="fa fa-power-off"></span></a></li>
+                </ul>
+                    {% else %}
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{{ path("sonata_user_admin_security_login") }}" id="usr_name"><span class="fa fa-user-o"></span> Connexion </a></li>
+                        </ul>
+                {% endif %}
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    {% endblock %}
+    <!-- Put your page content here! -->
+    {% block content %}
+    {% endblock content %}
+
+{% endblock %}

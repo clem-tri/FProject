@@ -1,0 +1,19 @@
+f_project_homepage:
+    path:     /
+    defaults: { _controller: FProjectBundle:Default:index }
+
+f_project_matchs:
+   resource: "@FProjectBundle/Controller/ConfrontationController.php"
+   type: annotation
+
+f_project_classement:
+   resource: "@FProjectBundle/Controller/ClassementController.php"
+   type: annotation
+
+f_project_but:
+   resource: "@FProjectBundle/Controller/ButController.php"
+   type: annotation
+
+f_project_joueur:
+   resource: "@FProjectBundle/Controller/JoueurController.php"
+   type: annotation

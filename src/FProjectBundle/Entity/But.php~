@@ -1,0 +1,100 @@
+<?php
+
+namespace FProjectBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * But
+ *
+ * @ORM\Table(name="but", indexes={@ORM\Index(name="idx_joueur_buteur", columns={"id_joueur"}), @ORM\Index(name="idx_club_buteur", columns={"id_club"}), @ORM\Index(name="idx_conf_buteur", columns={"id_confrontation"}), @ORM\Index(name="idx_assist_but", columns={"id_assist"})})
+ * @ORM\Entity
+ */
+class But
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ordre", type="integer", nullable=false)
+     */
+    private $ordre;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="penalty", type="boolean", nullable=false)
+     */
+    private $penalty;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="csc", type="boolean", nullable=false)
+     */
+    private $csc;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="minute", type="integer", nullable=false)
+     */
+    private $minute;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="minute_additionnelle", type="integer", nullable=true)
+     */
+    private $minuteAdditionnelle;
+
+    /**
+     * @var \FProjectBundle\Entity\Joueur
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Joueur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_joueur", referencedColumnName="id")
+     * })
+     */
+    private $idJoueur;
+
+    /**
+     * @var \FProjectBundle\Entity\Club
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Club")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_club", referencedColumnName="id")
+     * })
+     */
+    private $idClub;
+
+    /**
+     * @var \FProjectBundle\Entity\Confrontation
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Confrontation")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_confrontation", referencedColumnName="id")
+     * })
+     */
+    private $idConfrontation;
+
+    /**
+     * @var \FProjectBundle\Entity\Assist
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Assist")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_assist", referencedColumnName="id")
+     * })
+     */
+    private $idAssist;
+
+
+}

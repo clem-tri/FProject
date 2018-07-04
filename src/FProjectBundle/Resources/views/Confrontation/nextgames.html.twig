@@ -1,0 +1,37 @@
+{% extends "FProjectBundle:Default:navbar.html.twig" %}
+{% block content %}
+    <div class="container-fluid">
+            <div class="col-md-offset-4">
+                <div class="col-md-offset-1"><h1>{{ title }}</h1></div>
+            </div>
+
+            {% for ligue in ligues %}
+                {% set noMatchs = 0 %}
+                <div class="page-header">
+                    <h3>
+                        <img src="{{ ligue.logo|imagine_filter('miniatures_list') }}"> {{ ligue.nom }}
+                    </h3>
+                </div>
+                <div class="col-md-offset-4">
+                {% for game in games %}
+                    {% if game.idLigue == ligue.nom %}
+
+                         <div class="col-md-offset-1">
+                             {% include '@FProject/blocs/nextgames.html.twig' with {'game': game} %}
+                         </div>
+                        <br>
+                    {% else %}
+                        {% set noMatchs = noMatchs+1 %}
+                    {% endif %}
+                {% endfor %}
+                {% if noMatchs == games|length %}
+                    <div class="col-md-offset-2">Aucun match prévu</div>
+                {% endif %}
+                    </div>
+            {% endfor %}
+
+
+        </div>
+
+
+{% endblock %}

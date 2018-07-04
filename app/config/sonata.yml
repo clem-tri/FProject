@@ -1,0 +1,23 @@
+sonata_block:
+    blocks:
+        sonata.block.service.text:
+
+
+sonata_doctrine_orm_admin:
+       templates:
+          form:
+               - FProjectAdminBundle:Form:form_fields.html.twig
+               - SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig
+
+
+sonata_admin:
+  # title_logo: /media/images/Logomakr_3ymqzI.png
+   title: Administration
+   dashboard:
+           blocks:
+               # display a dashboard block
+               - { position: left, type: sonata.admin.block.admin_list }
+
+
+               # Customize this part to add new block configuration
+               - { position: right, type: sonata.block.service.text, settings: { content: "<h2>Bienvenue dans l'administration<br/>de F-Project</h2>"} }

@@ -1,0 +1,41 @@
+FProjectBundle\Entity\Club:
+    type: entity
+    table: club
+    indexes:
+        idx_ligue:
+            columns:
+                - id_ligue
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        dateCreation:
+            type: datetime
+            nullable: true
+            column: date_creation
+        logo:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+    manyToOne:
+        idLigue:
+            targetEntity: Ligue
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_ligue:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

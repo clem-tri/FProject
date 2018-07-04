@@ -1,0 +1,185 @@
+FProjectBundle\Entity\Composition:
+    type: entity
+    table: composition
+    indexes:
+        idx_id_conf:
+            columns:
+                - id_confrontation
+        idx_club:
+            columns:
+                - id_club
+        idx_gardien_joueur:
+            columns:
+                - id_joueur1
+        idx_formation:
+            columns:
+                - id_formation
+        idx_joueur2:
+            columns:
+                - id_joueur2
+        idx_joueur3:
+            columns:
+                - id_joueur3
+        idx_joueur4:
+            columns:
+                - id_joueur4
+        idx_joueur5:
+            columns:
+                - id_joueur5
+        idx_joueur6:
+            columns:
+                - id_joueur6
+        idx_joueur7:
+            columns:
+                - id_joueur7
+        idx_joueur8:
+            columns:
+                - id_joueur8
+        idx_joueur9:
+            columns:
+                - id_joueur9
+        idx_joueur10:
+            columns:
+                - id_joueur10
+        idx_joueur11:
+            columns:
+                - id_joueur11
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        idClub:
+            targetEntity: Club
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_club:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idConfrontation:
+            targetEntity: Confrontation
+            cascade: {  }
+            mappedBy: null
+            inversedBy: Compositions
+            joinColumn:
+              name: id_confrontation
+              referencedColumnName: id
+            joinColumns:
+                id_confrontation:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idFormation:
+            targetEntity: Formation
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_formation:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idJoueur1:
+            targetEntity: Joueur
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_joueur1:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idJoueur10:
+            targetEntity: Joueur
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_joueur10:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idJoueur11:
+            targetEntity: Joueur
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_joueur11:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idJoueur2:
+            targetEntity: Joueur
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_joueur2:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idJoueur3:
+            targetEntity: Joueur
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_joueur3:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idJoueur4:
+            targetEntity: Joueur
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_joueur4:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idJoueur5:
+            targetEntity: Joueur
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_joueur5:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idJoueur6:
+            targetEntity: Joueur
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_joueur6:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idJoueur7:
+            targetEntity: Joueur
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_joueur7:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idJoueur8:
+            targetEntity: Joueur
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_joueur8:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idJoueur9:
+            targetEntity: Joueur
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_joueur9:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

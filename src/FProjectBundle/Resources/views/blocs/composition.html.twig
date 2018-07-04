@@ -1,0 +1,5 @@
+{% for value in composition|to_array %}
+   {% if value is Joueur  %}
+       <div class="row"><a href="{{ path('fproject_joueur_joueur', { id: value.id } ) }}">{{ value }} </a><span class="badge">  {{ value.numMaillot }}</span> </div>
+   {% endif %}
+{% endfor %}

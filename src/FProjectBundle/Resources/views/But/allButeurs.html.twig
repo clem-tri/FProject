@@ -1,0 +1,25 @@
+{% extends "FProjectBundle:Default:navbar.html.twig" %}
+{% block content %}
+    {% if buts %}
+        <div class="container">
+            <div class="page-header">
+                <h2>Classement buteurs <b>{{ buts[0][0].idConfrontation.idLigue }}</b></h2>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Nombre buts</th>
+
+                </tr>
+                </thead>
+                {% for but in buts %}
+                    {% include 'FProjectBundle:blocs:allButeurs.html.twig' with {'but': but} %}
+                {% endfor %}
+            </table>
+        </div>
+    {% else %}
+
+    {% endif %}
+
+{% endblock %}

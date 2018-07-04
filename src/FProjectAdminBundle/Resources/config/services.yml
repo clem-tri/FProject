@@ -1,0 +1,78 @@
+services:
+#    f_project_admin.example:
+#        class: FProjectAdminBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+  admin.joueur:
+        class: FProjectAdminBundle\Admin\JoueurAdmin
+        arguments: [~, FProjectBundle\Entity\Joueur, ~]
+        tags:
+            - { name: sonata.admin, group: "F-Project" ,manager_type: orm, label: Joueur }
+  admin.club:
+        class: FProjectAdminBundle\Admin\ClubAdmin
+        arguments: [~,  FProjectBundle\Entity\Club, ~]
+        tags:
+            - { name: sonata.admin, group: "F-Project", manager_type: orm, label: Club }
+  admin.poste:
+        class: FProjectAdminBundle\Admin\PosteAdmin
+        arguments: [~,  FProjectBundle\Entity\Poste, ~]
+        tags:
+            - { name: sonata.admin,group: "F-Project", manager_type: orm, label: Poste }
+  admin.ligue:
+        class: FProjectAdminBundle\Admin\LigueAdmin
+        arguments: [~,  FProjectBundle\Entity\Ligue, ~]
+        tags:
+            - { name: sonata.admin,group: "F-Project", manager_type: orm, label: Ligue }
+  admin.confrontation:
+        class: FProjectAdminBundle\Admin\ConfrontationAdmin
+        arguments: [~,  FProjectBundle\Entity\Confrontation, ~]
+        tags:
+            - { name: sonata.admin,group: "F-Project", manager_type: orm, label: Confrontation }
+  admin.classement:
+          class: FProjectAdminBundle\Admin\ClassementAdmin
+          arguments: [~,  FProjectBundle\Entity\Classement, ~]
+          calls:
+             - [ setTemplate, ['list', "FProjectAdminBundle:CRUD:list_classement.html.twig"]]
+          tags:
+              - { name: sonata.admin,group: "F-Project", manager_type: orm, label: Classement }
+  admin.saison:
+            class: FProjectAdminBundle\Admin\SaisonAdmin
+            arguments: [~,  FProjectBundle\Entity\Saison, ~]
+            tags:
+                - { name: sonata.admin,group: "F-Project", manager_type: orm, label: Saison }
+  admin.but:
+          class: FProjectAdminBundle\Admin\ButAdmin
+          arguments: [~,  FProjectBundle\Entity\But, ~]
+          tags:
+              - { name: sonata.admin, show_in_dashboard: false ,group: "F-Project", manager_type: orm,label: Buts }
+
+
+  admin.composition:
+             class: FProjectAdminBundle\Admin\CompositionAdmin
+             arguments: [~, FProjectBundle\Entity\Composition, ~]
+             tags:
+                 - { name: sonata.admin, show_in_dashboard: false ,group: "F-Project", manager_type: orm,label: Composition }
+  admin.formation:
+                 class: FProjectAdminBundle\Admin\FormationAdmin
+                 arguments: [~, FProjectBundle\Entity\Formation, ~]
+                 tags:
+                    - {name: sonata.admin, group: "F-Project", manager_type: orm, label: Formation}
+  admin.phasefinale:
+               class: FProjectAdminBundle\Admin\PhaseFinaleAdmin
+               arguments: [~, FProjectBundle\Entity\PhaseFinale, ~]
+               tags:
+                   - { name: sonata.admin,group: "F-Project", manager_type: orm,label: Phase Finale }
+
+
+
+
+
+
+  form.type.image_form:
+          class: FProjectAdminBundle\Form\Type\ImageFormType
+          tags:
+              - { name: form.type, alias: image_form}
+
+  app.menu_listener:
+          class: FProjectAdminBundle\EventListener\MenuEventListener
+          tags:
+              - { name: kernel.event_listener, event: sonata.admin.event.configure.menu.sidebar, method: addMenuItems }

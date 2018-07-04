@@ -1,0 +1,26 @@
+FProjectBundle\Entity\Assist:
+    type: entity
+    table: assist
+    indexes:
+        idx_joueur_assist:
+            columns:
+                - id_joueur
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        idJoueur:
+            targetEntity: Joueur
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_joueur:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

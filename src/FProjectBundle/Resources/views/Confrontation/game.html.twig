@@ -1,0 +1,128 @@
+{% extends "FProjectBundle:Default:navbar.html.twig" %}
+{% block title %} FProject | {{ game }} - {{ game.date|date("d-m-Y") }} {% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="col-md-12">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-12 col-lg-push-3">
+            <h1>
+
+                {% if game.idClubDom.logo %}
+                    <img src="{{  game.idClubDom.logo|imagine_filter('images_list') }}">
+                {% endif %}
+
+                {{ game.idClubDom}}
+                <span class="badge" style="font-size: 36px;"> {{game.scoreClubDom  ?? "-"  }} </span>
+                :
+                <span class="badge" style="font-size: 36px;"> {{game.scoreClubExt  ?? "-" }} </span>
+                {{ game.idClubExt }}
+
+                {% if game.idClubExt.logo %}
+                    <img src="{{  game.idClubExt.logo|imagine_filter('images_list') }}">
+                {% endif %}
+            </h1>
+
+
+
+              </div>
+
+                    <div class="col-md-12 col-lg-push-5">
+
+                        <div class="row">{{ game.date|date('d/m/Y à H:i') }}</div>
+                        <div class="row">{{ game.idLigue }}</div>
+                        {% if game.idPhaseFinale %}
+                            <div class="row">{{ game.idPhaseFinale.libelle }}</div>
+                        {% endif %}
+
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <ul class="nav nav-tabs" id="myTabs" role="tablist">
+            <li role="presentation" class="active"><a href="#resume" id="home-tab" role="tab" data-toggle="tab" aria-controls="resume" aria-expanded="true">Résumé</a></li>
+            <li role="presentation" class=""><a href="#formations" role="tab" id="profile-tab" data-toggle="tab" aria-controls="formations" aria-expanded="false">Formations</a></li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+
+            <div class="tab-pane fade active in" role="tabpanel" id="resume" aria-labelledby="home-tab">
+                {% if game.buts is not empty %}
+               {% include '@FProject/blocs/buts.html.twig' with {'game': game} %}
+                {% endif %}
+                <br>
+                {% if game.possessionDom is not null %}
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-push-3">
+                            <h3>Possession</h3>
+
+                            <div class="progress">
+                                <div class="progress-bar -inverse" role="progressbar" style="width:{{ game.possessionDom }}%">
+                                    {{ game.idClubDom }} ({{ game.possessionDom }}%)
+                                </div>
+                                <div class="progress-bar progress-bar-warning" role="progressbar" style="width:{{ game.possessionExt }}%">
+                                    {{ game.idClubExt }} ({{ game.possessionExt }}%)
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="tab-pane fade" role="tabpanel" id="formations" aria-labelledby="profile-tab">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-lg-3 col-lg-push-3">
+                        {% for composition in game.Compositions %}
+                            {% if composition.idClub == game.idClubDom %}
+                                <b>{{ composition.idClub }}</b>
+                                {% include '@FProject/blocs/composition.html.twig' with {'composition': composition} %}
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+
+                    <div class="col-lg-3 col-lg-push-3">
+                        {% for composition in game.Compositions %}
+                            {% if composition.idClub == game.idClubExt %}
+                                <b>{{ composition.idClub }}</b>
+                                {% include '@FProject/blocs/composition.html.twig' with {'composition': composition} %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+                </div>
+
+
+            </div>
+
+          </div>
+
+
+    </div>
+
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+    <script type="text/javascript">
+        $('#myTabs a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show')
+        })
+
+    </script>
+{% endblock %}

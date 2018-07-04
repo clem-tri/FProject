@@ -1,0 +1,27 @@
+<div class="row">
+
+    <div class="col-md-offset-1">{{ game.date|date('d/m/Y à H:i') }}</div>
+</div>
+<div class="row">
+    <h4>
+        {% if game.idClubDom.logo %}
+            <img src="{{  game.idClubDom.logo|imagine_filter('images_list') }}">
+        {% endif %}
+        <a href="{{ path("fproject_confrontation_game",
+        {
+            id: game.id,
+            idClubDom: game.idClubDom,
+            idClubExt: game.idClubExt,
+            date: game.date|date('d-m-Y')
+        }
+        ) }}">
+            {{ game.idClubDom }} - {{ game.idClubExt }}
+        </a>
+        {% if game.idClubExt.logo %}
+            <img src="{{  game.idClubExt.logo|imagine_filter('images_list') }}">
+        {% endif %}
+    </h4>
+</div>
+
+
+

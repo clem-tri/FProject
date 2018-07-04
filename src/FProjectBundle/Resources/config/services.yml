@@ -1,0 +1,20 @@
+services:
+#    f_project.example:
+#        class: FProjectBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+ FProjectBundle.ConfrontationGetter:
+   class: FProjectBundle\Service\ConfrontationGetterService
+   arguments: ["@doctrine.orm.entity_manager"]
+ FProjectBundle.Classement:
+  class: FProjectBundle\Service\ClassementService
+  arguments: ["@doctrine.orm.entity_manager"]
+ FProjectBundle.Ligue:
+  class: FProjectBundle\Service\LigueService
+  arguments: ["@doctrine.orm.entity_manager"]
+ FProjectBundle.But:
+  class: FProjectBundle\Service\ButService
+  arguments: ["@doctrine.orm.entity_manager"]
+ FProjectBundle.Joueur:
+   class: FProjectBundle\Service\JoueurService
+   arguments: ["@doctrine.orm.entity_manager"]
+

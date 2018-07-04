@@ -1,0 +1,64 @@
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-lg-6 col-lg-push-3">
+
+            <div class="">
+            <h3>Buts</h3>
+            </div>
+
+
+{% for but in game.Buts %}
+
+    {% if (but.idClub == game.idClubDom and but.csc == null) or (but.idClub == game.idClubExt and but.csc)  %}
+
+            <div class="row">
+                <div class="col-lg-6 col-lg-push-1">
+                    {{ but.minute ~ "' " }}
+
+                    {% if but.minuteAdditionnelle is not null %}
+                        + {{ but.minuteAdditionnelle }}
+                    {% endif %}
+
+                    <i class="fa fa-futbol-o"></i>
+                    {{ but.idJoueur }}
+
+                    {% if but.penalty %}
+                        (sp)
+                    {% endif %}
+
+                    {% if but.csc %}
+                        (csc)
+                    {% endif %}
+                 </div>
+            </div>
+
+        {% else %}
+
+                <div class="row">
+                    <div class="col-lg-6 col-lg-push-6">
+                         {{ but.minute ~ "' " }}
+
+                        {% if but.minuteAdditionnelle is not null %}
+                            + {{ but.minuteAdditionnelle }}
+                        {% endif %}
+
+                        <i class="fa fa-futbol-o"></i>
+                        {{ but.idJoueur }}
+
+                        {% if but.penalty %}
+                            (sp)
+                        {% endif %}
+
+                        {% if but.csc %}
+                            (csc)
+                        {% endif %}
+
+                    </div>
+                </div>
+
+            {% endif %}
+
+{% endfor %}
+        </div>
+    </div>
+</div>

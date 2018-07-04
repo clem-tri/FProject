@@ -1,0 +1,9 @@
+form:
+  label_club: Club
+  label_saison: Saison
+  label_phaseFinale: Phase Finale
+  label_classement: Classement
+  label_poste: Poste
+  label_file: Fichier
+  label_nom: Nom
+  label_prenom: Prénom

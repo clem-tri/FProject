@@ -1,0 +1,165 @@
+<?php
+
+namespace FProjectBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Composition
+ *
+ * @ORM\Table(name="composition", indexes={@ORM\Index(name="idx_id_conf", columns={"id_confrontation"}), @ORM\Index(name="idx_club", columns={"id_club"}), @ORM\Index(name="idx_gardien_joueur", columns={"id_joueur1"}), @ORM\Index(name="idx_formation", columns={"id_formation"}), @ORM\Index(name="idx_joueur2", columns={"id_joueur2"}), @ORM\Index(name="idx_joueur3", columns={"id_joueur3"}), @ORM\Index(name="idx_joueur4", columns={"id_joueur4"}), @ORM\Index(name="idx_joueur5", columns={"id_joueur5"}), @ORM\Index(name="idx_joueur6", columns={"id_joueur6"}), @ORM\Index(name="idx_joueur7", columns={"id_joueur7"}), @ORM\Index(name="idx_joueur8", columns={"id_joueur8"}), @ORM\Index(name="idx_joueur9", columns={"id_joueur9"}), @ORM\Index(name="idx_joueur10", columns={"id_joueur10"}), @ORM\Index(name="idx_joueur11", columns={"id_joueur11"})})
+ * @ORM\Entity
+ */
+class Composition
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \FProjectBundle\Entity\Club
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Club")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_club", referencedColumnName="id")
+     * })
+     */
+    private $idClub;
+
+    /**
+     * @var \FProjectBundle\Entity\Confrontation
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Confrontation")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_confrontation", referencedColumnName="id")
+     * })
+     */
+    private $idConfrontation;
+
+    /**
+     * @var \FProjectBundle\Entity\Formation
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Formation")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_formation", referencedColumnName="id")
+     * })
+     */
+    private $idFormation;
+
+    /**
+     * @var \FProjectBundle\Entity\Joueur
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Joueur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_joueur1", referencedColumnName="id")
+     * })
+     */
+    private $idJoueur1;
+
+    /**
+     * @var \FProjectBundle\Entity\Joueur
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Joueur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_joueur10", referencedColumnName="id")
+     * })
+     */
+    private $idJoueur10;
+
+    /**
+     * @var \FProjectBundle\Entity\Joueur
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Joueur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_joueur11", referencedColumnName="id")
+     * })
+     */
+    private $idJoueur11;
+
+    /**
+     * @var \FProjectBundle\Entity\Joueur
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Joueur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_joueur2", referencedColumnName="id")
+     * })
+     */
+    private $idJoueur2;
+
+    /**
+     * @var \FProjectBundle\Entity\Joueur
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Joueur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_joueur3", referencedColumnName="id")
+     * })
+     */
+    private $idJoueur3;
+
+    /**
+     * @var \FProjectBundle\Entity\Joueur
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Joueur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_joueur4", referencedColumnName="id")
+     * })
+     */
+    private $idJoueur4;
+
+    /**
+     * @var \FProjectBundle\Entity\Joueur
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Joueur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_joueur5", referencedColumnName="id")
+     * })
+     */
+    private $idJoueur5;
+
+    /**
+     * @var \FProjectBundle\Entity\Joueur
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Joueur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_joueur6", referencedColumnName="id")
+     * })
+     */
+    private $idJoueur6;
+
+    /**
+     * @var \FProjectBundle\Entity\Joueur
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Joueur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_joueur7", referencedColumnName="id")
+     * })
+     */
+    private $idJoueur7;
+
+    /**
+     * @var \FProjectBundle\Entity\Joueur
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Joueur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_joueur8", referencedColumnName="id")
+     * })
+     */
+    private $idJoueur8;
+
+    /**
+     * @var \FProjectBundle\Entity\Joueur
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Joueur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_joueur9", referencedColumnName="id")
+     * })
+     */
+    private $idJoueur9;
+
+
+}

@@ -1,0 +1,111 @@
+<?php
+
+namespace FProjectBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Classement
+ *
+ * @ORM\Table(name="classement", indexes={@ORM\Index(name="idx_club_classement", columns={"id_club"}), @ORM\Index(name="idx_saison_classement", columns={"id_saison"}), @ORM\Index(name="idx_ligue", columns={"id_ligue"})})
+ * @ORM\Entity
+ */
+class Classement
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="points", type="integer", nullable=true)
+     */
+    private $points;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nb_match_joue", type="integer", nullable=true)
+     */
+    private $nbMatchJoue;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nb_victoire", type="integer", nullable=true)
+     */
+    private $nbVictoire;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nb_nul", type="integer", nullable=true)
+     */
+    private $nbNul;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nb_defaite", type="integer", nullable=true)
+     */
+    private $nbDefaite;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="but_pour", type="integer", nullable=true)
+     */
+    private $butPour;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="but_contre", type="integer", nullable=true)
+     */
+    private $butContre;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="difference_but", type="integer", nullable=true)
+     */
+    private $differenceBut;
+
+    /**
+     * @var \FProjectBundle\Entity\Club
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Club")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_club", referencedColumnName="id")
+     * })
+     */
+    private $idClub;
+
+    /**
+     * @var \FProjectBundle\Entity\Saison
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Saison")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_saison", referencedColumnName="id")
+     * })
+     */
+    private $idSaison;
+
+    /**
+     * @var \FProjectBundle\Entity\Ligue
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Ligue")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_ligue", referencedColumnName="id")
+     * })
+     */
+    private $idLigue;
+
+
+}

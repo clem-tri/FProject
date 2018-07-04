@@ -1,0 +1,91 @@
+FProjectBundle\Entity\Classement:
+    type: entity
+    table: classement
+    repositoryClass: FProjectBundle\Entity\ClassementRepository
+    indexes:
+        idx_club_classement:
+            columns:
+                - id_club
+        idx_saison_classement:
+            columns:
+                - id_saison
+        idx_ligue:
+            columns:
+                - id_ligue
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        points:
+            type: integer
+            nullable: true
+            unsigned: false
+        nbMatchJoue:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: nb_match_joue
+        nbVictoire:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: nb_victoire
+        nbNul:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: nb_nul
+        nbDefaite:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: nb_defaite
+        butPour:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: but_pour
+        butContre:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: but_contre
+        differenceBut:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: difference_but
+    manyToOne:
+        idClub:
+            targetEntity: Club
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_club:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idSaison:
+            targetEntity: Saison
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_saison:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idLigue:
+            targetEntity: Ligue
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_ligue:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

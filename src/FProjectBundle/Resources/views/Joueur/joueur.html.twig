@@ -1,0 +1,122 @@
+{% extends '@FProject/Default/navbar.html.twig' %}
+{% block title %}F-Project | Fiche joueur - {{ joueur }}{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><b>{{ joueur }}</b></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div align="center"> <img alt="joueurPicture" src="{{ joueur.photo|imagine_filter('images_list') }}" class="img-circle"><img alt="clubPicture" src="{{ joueur.idClub.logo|imagine_filter('images_list') }}"> </div>
+                            <div class=" col-md-9 col-lg-9 ">
+                                <table class="table table-user-information">
+                                    <tbody>
+                                    {% if joueur.nationalite %}
+                                    <tr>
+                                        <td>Nationalité:</td>
+                                        <td>{{ joueur.nationalite|countryName }} <span class="flag flag-{{ joueur.nationalite|lower }}"></span> </td>
+                                    </tr>
+                                    {% endif %}
+                                    {% if joueur.dateNaissance %}
+                                        <tr>
+                                            <td>
+                                                Âge:
+                                            </td>
+                                            <td>
+                                                {{ joueurAge|to_years }} ans ({{ joueur.dateNaissance|date("d/m/Y") }})
+                                            </td>
+                                        </tr>
+
+                                    {% endif %}
+                                    {% if joueur.taille %}
+                                        <tr>
+                                            <td>
+                                                Taille:
+                                            </td>
+                                            <td>
+                                                {{ joueur.taille }} cm
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                    {% if joueur.idPoste %}
+                                    <tr>
+
+                                        <td>Poste:</td>
+                                        <td>{{ joueur.idPoste }}</td>
+                                    </tr>
+                                        {% endif %}
+                                     {% if joueur.numMaillot %}
+                                    <tr>
+                                        <td>Numéro:</td>
+                                        <td>{{ joueur.numMaillot }}</td>
+                                    </tr>
+                                         {% endif %}
+                                    {% if joueur.idClub %}
+                                    <tr>
+                                        <td>Club:</td>
+                                        <td>{{ joueur.idClub }}</td>
+                                    </tr>
+                                        {% endif %}
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-offset-0 col-md-offset-3 col-lg-offset-3">
+        <h1>Rencontres disputées</h1>
+        {% if confrontations|length > 0 %}
+                <div class="list-group">
+                    {% for confrontation in confrontations %}
+
+                        <a href="{{ path('fproject_confrontation_game',
+
+                        {
+                            id: confrontation.id,
+                            idClubDom: confrontation.idClubDom,
+                            idClubExt: confrontation.idClubExt,
+                            date: confrontation.date|date('d-m-Y')
+                        }
+                        ) }}"
+                           class="list-group-item">
+                            {{ confrontation.date|date('d/m/Y') ~ " - " ~ confrontation }}
+                            {% for but in confrontation.buts %}
+                                {% if but.IdJoueur ==  joueur %}
+                                    <i class="fa fa-futbol-o"></i>
+                                {% endif %}
+
+                            {% endfor %}
+
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {% else %}
+
+
+
+                            Pas de rencontres disputées pour ce joueur
+
+
+                    </div>
+
+            {% endif %}
+    </div>
+
+
+{% endblock %}

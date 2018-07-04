@@ -1,0 +1,30 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+    app.to_array_twig_extension:
+        class: FProjectBundle\Twig\ToArrayExtension
+        public: false
+        tags:
+           - { name: twig.extension }
+    app.country_twig_extension:
+           class: FProjectBundle\Twig\CountryExtension
+           public: false
+           tags:
+               - { name: twig.extension }
+    app.instance_of_extension:
+           class: FProjectBundle\Twig\InstanceOfExtension
+           public: false
+           tags:
+              - {name: twig.extension}
+    app.days_to_years_extension:
+              class: FProjectBundle\Twig\DaysToYearsExtension
+              public: false
+              tags:
+              - {name: twig.extension}

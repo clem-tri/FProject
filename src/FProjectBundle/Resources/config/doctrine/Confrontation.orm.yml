@@ -1,0 +1,119 @@
+FProjectBundle\Entity\Confrontation:
+    type: entity
+    table: confrontation
+    repositoryClass: FProjectBundle\Entity\ConfrontationRepository
+    indexes:
+        club_ext:
+            columns:
+                - id_club_ext
+        club_dom:
+            columns:
+                - id_club_dom
+        idx_ligue:
+            columns:
+                - id_ligue
+        idx_saison_confrontation:
+            columns:
+                - id_saison
+        idx_phasefinale:
+            columns:
+                - id_phase_finale
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        scoreClubDom:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: score_club_dom
+        scoreClubExt:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: score_club_ext
+        possessionDom:
+             type: decimal
+             precision: 3
+             scale: 1
+             nullable: true
+             unsigned: false
+             column: possession_dom
+        possessionExt:
+             type: decimal
+             precision: 3
+             scale: 1
+             nullable: true
+             unsigned: false
+             column: possession_ext
+        date:
+            type: datetime
+            nullable: true
+#        eliminationDirecte:
+#            type: boolean
+#            nullable: true
+#            column: elimination_directe
+    oneToMany:
+             Buts:
+               targetEntity: FProjectBundle\Entity\But
+               mappedBy: idConfrontation
+               cascade: ['all']
+               orphanRemoval: true
+               orderBy: {ordre: ASC}
+             Compositions:
+                targetEntity: FProjectBundle\Entity\Composition
+                mappedBy: idConfrontation
+                cascade: ['all']
+                orphanRemoval: true
+    manyToOne:
+        idClubDom:
+            targetEntity: Club
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_club_dom:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idClubExt:
+            targetEntity: Club
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_club_ext:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idLigue:
+            targetEntity: Ligue
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_ligue:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idSaison:
+            targetEntity: Saison
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_saison:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idPhaseFinale:
+            targetEntity: PhaseFinale
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_phase_finale:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

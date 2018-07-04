@@ -1,0 +1,35 @@
+FProjectBundle\Entity\FosUserGroup:
+    type: entity
+    table: fos_user_group
+    uniqueConstraints:
+        UNIQ_583D1F3E5E237E06:
+            columns:
+                - name
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        roles:
+            type: array
+            nullable: false
+            length: null
+            fixed: false
+    manyToMany:
+        user:
+            targetEntity: FosUserUser
+            cascade: {  }
+            mappedBy: group
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

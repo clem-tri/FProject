@@ -1,0 +1,103 @@
+<?php
+
+namespace FProjectBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Confrontation
+ *
+ * @ORM\Table(name="confrontation", indexes={@ORM\Index(name="club_ext", columns={"id_club_ext"}), @ORM\Index(name="club_dom", columns={"id_club_dom"}), @ORM\Index(name="idx_ligue", columns={"id_ligue"}), @ORM\Index(name="idx_saison_confrontation", columns={"id_saison"}), @ORM\Index(name="idx_phasefinale", columns={"id_phase_finale"})})
+ * @ORM\Entity
+ */
+class Confrontation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="score_club_dom", type="integer", nullable=true)
+     */
+    private $scoreClubDom;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="score_club_ext", type="integer", nullable=true)
+     */
+    private $scoreClubExt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="elimination_directe", type="boolean", nullable=true)
+     */
+    private $eliminationDirecte;
+
+    /**
+     * @var \FProjectBundle\Entity\Club
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Club")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_club_dom", referencedColumnName="id")
+     * })
+     */
+    private $idClubDom;
+
+    /**
+     * @var \FProjectBundle\Entity\Club
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Club")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_club_ext", referencedColumnName="id")
+     * })
+     */
+    private $idClubExt;
+
+    /**
+     * @var \FProjectBundle\Entity\Ligue
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Ligue")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_ligue", referencedColumnName="id")
+     * })
+     */
+    private $idLigue;
+
+    /**
+     * @var \FProjectBundle\Entity\Saison
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\Saison")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_saison", referencedColumnName="id")
+     * })
+     */
+    private $idSaison;
+
+    /**
+     * @var \FProjectBundle\Entity\PhaseFinale
+     *
+     * @ORM\ManyToOne(targetEntity="FProjectBundle\Entity\PhaseFinale")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_phase_finale", referencedColumnName="id")
+     * })
+     */
+    private $idPhaseFinale;
+
+
+}

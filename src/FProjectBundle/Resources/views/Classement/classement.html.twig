@@ -1,0 +1,32 @@
+{% extends "FProjectBundle:Default:navbar.html.twig" %}
+{% block content %}
+    {% if classement %}
+    <div class="container">
+        <h1>Classement {{ classement[0].idClub.idLigue }} - {{ classement[0].idSaison }}</h1>
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>PTS</th>
+                    <th>MJ</th>
+                    <th>V</th>
+                    <th>N</th>
+                    <th>D</th>
+                    <th>BP</th>
+                    <th>BC</th>
+                    <th>+/-</th>
+                </tr>
+                </thead>
+                {% for c in classement %}
+                    {% include 'FProjectBundle:blocs:classement.html.twig' with {'c': c} %}
+                {% endfor %}
+            </table>
+        </div>
+        </div>
+
+        {% else %}
+
+        {% endif %}
+
+{% endblock %}

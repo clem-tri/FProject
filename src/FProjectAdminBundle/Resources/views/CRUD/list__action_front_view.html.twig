@@ -1,0 +1,27 @@
+{% if admin.label|trans({}) == 'Confrontation' %}
+
+{% set path =  path( admin.frontRouteName,
+
+            {
+            id: object.id,
+            idClubDom: object.idClubDom,
+            idClubExt: object.idClubExt,
+            date: object.date|date('d-m-Y')
+            }
+        )
+
+%}
+
+{% elseif admin.label|trans({}) == 'Joueur' %}
+    {% set path =   path( admin.frontRouteName, {id: object.id})  %}
+{% endif %}
+
+<a href="{{ path }}"
+
+   class="btn btn-sm btn-default view_link"
+   title="{{ 'action_show'|trans({}, 'SonataAdminBundle') }}"
+   target="_blank">
+
+    <i class="fa fa-eye"></i>
+    {{ 'action_show'|trans({}, 'SonataAdminBundle') }}
+</a>

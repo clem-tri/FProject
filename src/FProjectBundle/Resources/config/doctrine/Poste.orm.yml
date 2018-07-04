@@ -1,0 +1,23 @@
+FProjectBundle\Entity\Poste:
+    type: entity
+    table: poste
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        code:
+            type: string
+            nullable: false
+            length: 3
+            fixed: false
+        libelle:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+    lifecycleCallbacks: {  }
